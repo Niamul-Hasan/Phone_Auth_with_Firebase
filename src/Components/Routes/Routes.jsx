@@ -3,6 +3,7 @@ import LandingPage from "../LayOut/LandingPage";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import PhoneSignUp from "../Pages/PhoneSignUp";
 
 
 
@@ -22,7 +23,11 @@ const router = createBrowserRouter([{
         {
             path: '/register',
             element: <Register></Register>
-        }
+        },
+        {
+            path: '/phoneSign',
+            element: <PhoneSignUp></PhoneSignUp>
+        },
 
     ]
 

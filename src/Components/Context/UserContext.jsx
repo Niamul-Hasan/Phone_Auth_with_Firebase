@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import { createContext } from 'react';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, RecaptchaVerifier, signInWithPhoneNumber, signOut } from 'firebase/auth';
 import app from '../FireBase/Firebase.config';
 export const AuthContext = createContext();
 
@@ -28,6 +28,12 @@ const UserContext = ({ children }) => {
     const logOut = () => {
         return signOut(auth);
     }
+    const setRecapcha = (number) => {
+        window.recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {});
+        window.recaptchaVerifier.render();
+        return signInWithPhoneNumber(auth, number, window.recaptchaVerifier);
+
+    }
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
@@ -41,7 +47,7 @@ const UserContext = ({ children }) => {
 
     }, []);
 
-    const authInfo = { createUser, signIn, signInWithGoogle, logOut, user, loading };
+    const authInfo = { createUser, signIn, signInWithGoogle, logOut, user, loading, setRecapcha };
 
 
     return (

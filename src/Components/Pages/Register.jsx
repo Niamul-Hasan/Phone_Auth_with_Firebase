@@ -2,6 +2,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../Context/UserContext';
 import { FcGoogle } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     const { createUser, signInWithGoogle } = useContext(AuthContext);
@@ -40,11 +41,11 @@ const Register = () => {
         }).catch(error => console.error(error));
     }
     return (
-        <div>
-            <div className="hero min-h-screen bg-base-200 mt-16">
-                <div className="hero-content flex-col">
+        <div className='mt-5'>
+            <div className="flex flex-col w-full lg:flex-row justify-center items-center gap-4">
+                <div className="">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Register now!</h1>
+                        <h1 className="text-5xl font-bold mb-5">Register Now!</h1>
 
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -66,25 +67,30 @@ const Register = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" name='password' placeholder="password" className="input input-bordered" required />
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
+
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Register</button>
-                                <div className="divider">OR</div>
-                                <button onClick={handleGoogle} className="btn mb-2"
-                                    onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
-                                    style={{
-                                        backgroundColor: isHovering ? 'gray' : 'black',
-                                        color: isHovering ? 'black' : 'white',
-                                    }}
-                                >
-                                    <span className='text-2xl'><FcGoogle></FcGoogle></span>
-                                    Register With Google</button>
+
                             </div>
                         </form>
                     </div>
+                </div>
+                <div className="divider lg:divider-horizontal">OR</div>
+                <div>
+
+                    <Link to="/phoneSign"><button className="btn btn-success">Register with Phone Number</button>
+                    </Link>
+                    <div className="divider">OR</div>
+                    <button onClick={handleGoogle} className="btn mb-2"
+                        onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+                        style={{
+                            backgroundColor: isHovering ? 'gray' : 'black',
+                            color: isHovering ? 'black' : 'white',
+                        }}
+                    >
+                        <span className='text-2xl ms-4'><FcGoogle></FcGoogle></span>
+                        Register With Google</button>
                 </div>
             </div>
         </div>

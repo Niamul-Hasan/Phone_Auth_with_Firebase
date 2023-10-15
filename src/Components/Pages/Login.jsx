@@ -2,7 +2,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../Context/UserContext';
 import { FcGoogle } from 'react-icons/fc';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const { signIn, signInWithGoogle } = useContext(AuthContext);
@@ -55,7 +55,8 @@ const Login = () => {
                                 </label>
                                 <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <p className="label-text-alt">New to this site?
+                                        <Link to='/register'> <span className='font-mono uppercase text-blue-500'>register Now</span></Link></p>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
@@ -64,6 +65,8 @@ const Login = () => {
                                 <button onClick={handleGoogle} className="btn btn-success mb-2">
                                     <span className='text-2xl'><FcGoogle></FcGoogle></span>
                                     Login With Google</button>
+                                <div className="divider">OR</div>
+                                <button className="btn btn-info">Register with Phone Number</button>
                             </div>
                         </form>
 
