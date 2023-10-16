@@ -3,6 +3,7 @@ import PhoneInput from 'react-phone-number-input'
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/UserContext';
+import Timer from './Timer';
 const PhoneSignUp = () => {
     const { setRecapcha } = useContext(AuthContext);
     const [value, setValue] = useState("");
@@ -20,18 +21,20 @@ const PhoneSignUp = () => {
         console.log(value);
         setError("");
         if (value === "" || value === undefined) {
-            setError("Please enter a valid phone number!");
-            return console.log(error);
+            return setError("Please enter a valid phone number!");
         }
         try {
             const response = await setRecapcha(value);
             console.log(response);
             setResult(response);
             setFlag(true);
+
+
         } catch (err) {
             setError(err.message);
         }
     }
+
 
     const verifyOtp = async (e) => {
         e.preventDefault();
@@ -62,9 +65,11 @@ const PhoneSignUp = () => {
                                 value={value}
                                 onChange={setValue} />
                             <div className='mt-2' id="recaptcha-container"></div>
+                            <div className='mt-2 text-red-500 font-semibold'>{error}</div>
                             <div className="card-actions justify-end mt-4">
-                                <button onClick={handleCancel} className="btn btn-sm btn-error">cancel</button>
-                                <button className="btn btn-sm btn-success" type='submit'>send otp</button>
+                                {!error ? <><button onClick={handleCancel} className="btn btn-sm btn-error">cancel</button><button className="btn btn-sm btn-success" type='submit'>send otp</button>
+                                </> : <button onClick={() => window.location.reload(false)}
+                                    className='btn btn-sm btn-warning'>Try Again</button>}
                             </div>
                         </form >
                         <form onSubmit={verifyOtp}
@@ -79,6 +84,7 @@ const PhoneSignUp = () => {
                                 <button onClick={handleCancel} className="btn btn-sm btn-error">cancel</button>
                                 <button className="btn btn-sm btn-success" type='submit'>verify otp</button>
                             </div>
+
                         </form >
 
                     </div>
@@ -86,7 +92,7 @@ const PhoneSignUp = () => {
                 </div>
             </div>
 
-
+            {flag && <Timer />}
         </div >
     );
 };
