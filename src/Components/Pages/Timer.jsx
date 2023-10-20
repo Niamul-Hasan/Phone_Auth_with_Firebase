@@ -20,24 +20,26 @@ const Timer = () => {
     if (minuites === 0 && seconds === 0) {
         setTimeout(() => {
             return navigate("/login");
-        }, 1000);
+        }, 5000);
     }
     return (
-        <div className="mt-3 flex flex-row justify-center items-center gap-3">
-            <span className="text-xl text-orange-600">Your Have :</span>
-            <span className="countdown font-mono text-2xl">
-                <span style={{ "--value": minuites }}></span>
+        <>
+            <div className="mt-3 flex flex-row justify-center items-center gap-3">
+                <span className="text-xl text-orange-600">You Have :</span>
+                <span className="countdown font-mono text-2xl">
+                    <span style={{ "--value": minuites }}></span>
 
-            </span>
-            <span>Min</span>
+                </span>
+                <span className="text-xl font-semibold">Min</span>
 
-            <span className="countdown font-mono text-2xl">
-                <span style={{ "--value": seconds }}></span>
+                <span className="countdown font-mono text-2xl">
+                    <span style={{ "--value": seconds }}></span>
 
-            </span>
-            <span>Sec</span>
+                </span>
+                <span className="text-xl font-semibold">Sec</span>
 
-        </div>
+            </div>
+        </>
     );
 };
 
