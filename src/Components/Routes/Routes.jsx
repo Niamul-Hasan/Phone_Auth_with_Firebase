@@ -3,7 +3,7 @@ import LandingPage from "../LayOut/LandingPage";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
-import PhoneSignUp from "../Pages/PhoneSignUp";
+import PhoneSignUp from "../Pages/PhoneSignUp/PhoneSignUp";
 
 
 

@@ -2,8 +2,9 @@ import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../Context/UserContext';
-import Timer from './Timer';
+import { AuthContext } from '../../Context/UserContext';
+import Timer from '../Timer';
+import "./Phone.css";
 const PhoneSignUp = () => {
     const { setRecapcha } = useContext(AuthContext);
     const [value, setValue] = useState("");
@@ -49,9 +50,8 @@ const PhoneSignUp = () => {
         }
     };
     return (
-        <div className='flex flex-col justify-center items-center h-screen'>
+        <div className='flex flex-col justify-start items-center lg:justify-center h-screen bg-gradient-to-br from-amber-400 via-cyan-300 to-pink-500 background-animate'>
             <div className="card w-96 glass shadow-xl">
-                {/* <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure> */}
                 <div className="card-body">
                     <h2 className="card-title">Sign Up With Your Active Phone Number</h2>
                     <div className='p-4'>
