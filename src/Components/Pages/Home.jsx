@@ -28,10 +28,13 @@ const Home = () => {
             <h1 className="text-4xl">This is homepage</h1>
             <h1>The Current User is:{user?.email || user?.phoneNumber}</h1>
 
-            <button onClick={handlecheck} className="btn btn-md btn-info">Check</button>
+            <div className="flex flex-row justify-between w-1/2 mx-auto">
+                <button onClick={handlecheck} className="btn btn-sm btn-error">Check</button>
+                <button className="btn btn-sm btn-info" onClick={() => navigate("/print")}> printing page </button>
 
-            {user ? <button onClick={signOut} className="btn btn-sm">SignOut</button>
-                : <button onClick={handleClick} className="btn btn-sm">SignIn</button>}
+                {user ? <button onClick={signOut} className="btn btn-sm">SignOut</button>
+                    : <button onClick={handleClick} className="btn btn-sm">SignIn</button>}
+            </div>
         </div>
     );
 };
